@@ -1,6 +1,6 @@
 # 📋 PHP Validation Class
 
-Welcome to the **Validation Class**! This PHP library provides a comprehensive set of validation tools for form inputs and other data, making it easier to ensure data integrity and reliability in your applications. 🚀
+Welcome to the **Validation Library**! This PHP library provides a comprehensive set of validation tools for form inputs and other data, making it easier to ensure data integrity and reliability in your applications. 🚀
 
 ## 🎯 Features
 
@@ -15,7 +15,7 @@ Welcome to the **Validation Class**! This PHP library provides a comprehensive s
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/arashnasrivatan/php-validation-class.git
+   git clone https://github.com/Arashnasrivatan/PHP-Validation-Class.git
    ```
 2. Include the `Validation.php` file in your project:
    ```php
