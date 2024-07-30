@@ -2,6 +2,9 @@
 
 Welcome to the **Validation Library**! This PHP library provides a comprehensive set of validation tools for form inputs and other data, making it easier to ensure data integrity and reliability in your applications. 🚀
 
+Login , Register , ForgotPassword project using this class 💻 <a href="https://github.com/Arashnasrivatan/Secure-Login-Register">Click To See 👀</a>
+
+
 ## 🎯 Features
 
 - **Predefined Patterns**: Validate common data types like URLs, emails, integers, and more.
