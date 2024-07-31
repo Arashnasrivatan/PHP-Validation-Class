@@ -11,6 +11,7 @@ Login , Register , ForgotPassword project using this class 💻 <a href="https:/
 - **Custom Patterns**: Define your own regex patterns for flexible validation.
 - **File Validation**: Check file size, extension, and more.
 - **Error Handling**: Retrieve and display user-friendly error messages.
+- **English and Persian** Available in two languages: Persian and English.
 
 ## 🚀 Getting Started
 
