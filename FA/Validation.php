@@ -1,52 +1,52 @@
 <?php
 class Validation {
 
-    // Define a list of common patterns for validation
+    // تعریف الگوهای معمول برای اعتبارسنجی
     public $patterns = array(
-        'uri'           => '[A-Za-z0-9-\/_?&=]+',
-        'url'           => '[A-Za-z0-9-:.\/_?&=#]+',
-        'alpha'         => '[\p{L}]+',
-        'words'         => '[\p{L}\s]+',
-        'alphanum'      => '[\p{L}0-9]+',
-        'int'           => '[0-9]+',
-        'float'         => '[0-9\.,]+',
-        'tel'           => '^09[0-9]{9}$', // Iranian phone number format
-        'text'          => '[\p{L}0-9\s-.,;:!"%&()?+\'°#\/@]+',
-        'file'          => '[\p{L}\s0-9-_!%&()=\[\]#@,.;+]+\.[A-Za-z0-9]{2,4}',
-        'folder'        => '[\p{L}\s0-9-_!%&()=\[\]#@,.;+]+',
-        'address'       => '[\p{L}0-9\s.,()°-]+',
-        'date_dmy'      => '[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}',
-        'date_ymd'      => '[0-9]{4}\-[0-9]{1,2}\-[0-9]{1,2}',
-        'email'         => '^[a-zA-Z0-9._%+-]+@gmail\.com$', // Only allows Gmail addresses
-        'postal_code'   => '[0-9]{5}(-[0-9]{4})?',
-        'credit_card'   => '^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$',
+        'uri'           => '[A-Za-z0-9-\/_?&=]+', // آدرس ساده
+        'url'           => '[A-Za-z0-9-:.\/_?&=#]+', // آدرس کامل URL
+        'alpha'         => '[\p{L}]+', // فقط حروف الفبا
+        'words'         => '[\p{L}\s]+', // حروف و فاصله‌ها
+        'alphanum'      => '[\p{L}0-9]+', // حروف و اعداد
+        'int'           => '[0-9]+', // اعداد صحیح
+        'float'         => '[0-9\.,]+', // اعداد اعشاری
+        'tel'           => '^09[0-9]{9}$', // شماره تلفن ایرانی
+        'text'          => '[\p{L}0-9\s-.,;:!"%&()?+\'°#\/@]+', // متون عمومی
+        'file'          => '[\p{L}\s0-9-_!%&()=\[\]#@,.;+]+\.[A-Za-z0-9]{2,4}', // نام فایل
+        'folder'        => '[\p{L}\s0-9-_!%&()=\[\]#@,.;+]+', // نام پوشه
+        'address'       => '[\p{L}0-9\s.,()°-]+', // آدرس
+        'date_dmy'      => '[0-9]{1,2}\-[0-9]{1,2}\-[0-9]{4}', // تاریخ به فرمت روز-ماه-سال
+        'date_ymd'      => '[0-9]{4}\-[0-9]{1,2}\-[0-9]{1,2}', // تاریخ به فرمت سال-ماه-روز
+        'email'         => '^[a-zA-Z0-9._%+-]+@gmail\.com$', // ایمیل با دامنه جیمیل
+        'postal_code'   => '[0-9]{5}(-[0-9]{4})?', // کد پستی
+        'credit_card'   => '^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|6(?:011|5[0-9]{2})[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|(?:2131|1800|35\d{3})\d{11})$', // شماره کارت اعتباری
         'slug'          => '^[a-z0-9-]+$',
-        'ipv4'          => '\b(?:\d{1,3}\.){3}\d{1,3}\b',
-        'ipv6'          => '\b(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4}\b',
+        'ipv4'          => '\b(?:\d{1,3}\.){3}\d{1,3}\b', // آدرس IP نسخه 4
+        'ipv6'          => '\b(?:[a-fA-F0-9]{1,4}:){7}[a-fA-F0-9]{1,4}\b', // آدرس IP نسخه 6
     );
 
-    // Store validation errors
+    // ذخیره خطاهای اعتبارسنجی
     public $errors = array();
 
-    // Set the name of the field being validated
+    // تنظیم نام فیلدی که اعتبارسنجی می‌شود
     public function name($name){
         $this->name = $name;
         return $this;
     }
 
-    // Set the value of the field being validated
+    // تنظیم مقدار فیلدی که اعتبارسنجی می‌شود
     public function value($value){
         $this->value = $value;
         return $this;
     }
 
-    // Set the file for file validation
+    // تنظیم فایل برای اعتبارسنجی فایل
     public function file($value){
         $this->file = $value;
         return $this;
     }
 
-    // Apply a predefined pattern to the value
+    // اعمال یک الگوی از پیش تعریف شده به مقدار
     public function pattern($name){
         if($name == 'array'){
             if(!is_array($this->value)){
@@ -61,7 +61,7 @@ class Validation {
         return $this;
     }
 
-    // Apply a custom pattern to the value
+    // اعمال یک الگوی سفارشی به مقدار
     public function customPattern($pattern){
         $regex = '/^('.$pattern.')$/u';
         if($this->value != '' && !preg_match($regex, $this->value)){
@@ -70,7 +70,7 @@ class Validation {
         return $this;
     }
 
-    // Check if the value is required and not empty
+    // بررسی اگر مقدار فیلد ضروری است و نباید خالی باشد
     public function required(){
         if((isset($this->file) && $this->file['error'] == 4) || ($this->value == '' || $this->value == null)){
             $this->errors[] = 'فیلد '.$this->name.' اجباری است.';
@@ -78,7 +78,7 @@ class Validation {
         return $this;
     }
 
-    // Check if the value has a minimum length
+    // بررسی اگر مقدار دارای طول حداقل باشد
     public function min($length){
         if(is_string($this->value)){
             if(strlen($this->value) < $length){
@@ -92,7 +92,7 @@ class Validation {
         return $this;
     }
 
-    // Check if the value does not exceed a maximum length
+    // بررسی اگر مقدار از طول حداکثر تجاوز نکند
     public function max($length){
         if(is_string($this->value)){
             if(strlen($this->value) > $length){
@@ -106,7 +106,7 @@ class Validation {
         return $this;
     }
 
-    // Check if the value is equal to another value
+    // بررسی اگر مقدار با مقدار دیگری برابر باشد
     public function equal($value){
         if($this->value != $value){
             $this->errors[] = 'مقدار فیلد '.$this->name.' مطابقت ندارد.';
@@ -114,7 +114,7 @@ class Validation {
         return $this;
     }
 
-    // Check if the file size does not exceed a maximum size
+    // بررسی اگر اندازه فایل از حداکثر اندازه مجاز تجاوز نکند
     public function maxSize($size){
         if($this->file['error'] != 4 && $this->file['size'] > $size){
             $this->errors[] = 'حجم فایل '.$this->name.' از حداکثر مجاز بیشتر است: '.number_format($size / 1048576, 2).' MB.';
@@ -122,7 +122,7 @@ class Validation {
         return $this;
     }
 
-    // Check if the file has the correct extension
+    // بررسی اگر فایل دارای فرمت صحیح باشد
     public function ext($extension){
         if($this->file['error'] != 4 && pathinfo($this->file['name'], PATHINFO_EXTENSION) != $extension && strtoupper(pathinfo($this->file['name'], PATHINFO_EXTENSION)) != $extension){
             $this->errors[] = 'فرمت فایل '.$this->name.' باید '.$extension.' باشد.';
@@ -130,22 +130,22 @@ class Validation {
         return $this;
     }
 
-    // Sanitize a string
+    // پاکسازی یک رشته
     public function purify($string){
         return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
     }
 
-    // Check if there are no validation errors
+    // بررسی اگر هیچ خطای اعتبارسنجی وجود ندارد
     public function isSuccess(){
         return empty($this->errors);
     }
 
-    // Get the list of validation errors
+    // دریافت لیست خطاهای اعتبارسنجی
     public function getErrors(){
         return $this->isSuccess() ? [] : $this->errors;
     }
 
-    // Display all validation errors as an HTML list
+    // نمایش تمام خطاهای اعتبارسنجی به صورت لیست HTML
     public function displayErrors(){
         $html = '<ul>';
         foreach($this->getErrors() as $error){
@@ -155,12 +155,12 @@ class Validation {
         return $html;
     }
 
-    // Display the first validation error
+    // نمایش اولین خطای اعتبارسنجی
     public function displayError(){
         return !empty($this->errors) ? $this->errors[0] : '';
     }
 
-    // Print validation errors and stop script execution if there are any
+    // چاپ خطاهای اعتبارسنجی و متوقف کردن اجرای اسکریپت در صورت وجود خطا
     public function result(){
         if(!$this->isSuccess()){
             foreach($this->getErrors() as $error){
@@ -171,7 +171,7 @@ class Validation {
         return true;
     }
 
-    // Check if a value is unique in the specified table and column
+    // بررسی اگر یک مقدار در جدول و ستون مشخص منحصر به فرد باشد
     public function uniq($table, $cul, $value){
         global $db;
 
@@ -191,7 +191,7 @@ class Validation {
         }
     }
 
-    // Check if a value exists in the specified table and column
+    // بررسی اگر یک مقدار در جدول و ستون مشخص وجود داشته باشد
     public function isExist($table, $cul, $value){
         global $db;
 
@@ -211,7 +211,7 @@ class Validation {
         }
     }
 
-    // Static methods for common validation checks
+    // متدهای استاتیک برای بررسی‌های اعتبارسنجی عمومی
     public static function is_int($value){
         return filter_var($value, FILTER_VALIDATE_INT) !== false;
     }
