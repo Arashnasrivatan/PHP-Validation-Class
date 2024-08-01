@@ -106,6 +106,21 @@ class Validation {
         }
         return $this;
     }
+
+
+    public function length($length){
+        if (is_string($this->value)) {
+            if (strlen($this->value) != $length) {
+                $this->errors[] = 'The length of the field ' . $this->name . ' must be exactly ' . $length . ' characters.';
+            }
+        } else {
+            if ($this->value != $length) {
+                $this->errors[] = 'The length of the field ' . $this->name . ' must be exactly ' . $length . ' characters.';
+            }
+        }
+        return $this;
+    }
+    
     
     // Check if the value matches a specified value
     public function equal($value){

@@ -106,6 +106,21 @@ class Validation {
         return $this;
     }
 
+    // برسی اگر مقدار مساوی با مقدار تایین شده نباشد
+    public function length($length){
+        if (is_string($this->value)) {
+            if (strlen($this->value) != $length) {
+                $this->errors[] = 'طول فیلد ' . $this->name . ' باید دقیقاً ' . $length . ' کاراکتر باشد.';
+            }
+        } else {
+            if ($this->value != $length) {
+                $this->errors[] = 'طول فیلد ' . $this->name . ' باید دقیقاً ' . $length . ' کاراکتر باشد.';
+            }
+        }
+        return $this;
+    }
+    
+
     // بررسی اگر مقدار با مقدار دیگری برابر باشد
     public function equal($value){
         if($this->value != $value){
