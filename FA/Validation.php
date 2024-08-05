@@ -129,6 +129,17 @@ class Validation {
         return $this;
     }
 
+    // برسی اینکه اگر مقدار با مقدار های داده شده برابر باشد
+
+    public function enum($allowedValues){
+        $allowedValuesArray = explode('|', $allowedValues);
+        if(!in_array($this->value, $allowedValuesArray)){
+            $this->errors[] = 'مقدار فیلد '.$this->name.' معتبر نیست.';
+        }
+        return $this;
+    }
+    
+    
     // بررسی اگر اندازه فایل از حداکثر اندازه مجاز تجاوز نکند
     public function maxSize($size){
         if($this->file['error'] != 4 && $this->file['size'] > $size){
