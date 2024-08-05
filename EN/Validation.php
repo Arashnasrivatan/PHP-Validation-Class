@@ -107,7 +107,15 @@ class Validation {
         return $this;
     }
 
+    // Check if the value falls within a specified range
+    public function range($min, $max){
+        if($this->value < $min || $this->value > $max){
+            $this->errors[] = 'The value of the field '.$this->name.' must be between '.$min.' and '.$max.'.';
+        }
+        return $this;
+    }
 
+    
     public function length($length){
         if (is_string($this->value)) {
             if (strlen($this->value) != $length) {
