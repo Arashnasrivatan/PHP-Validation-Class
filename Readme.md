@@ -89,7 +89,9 @@ if ($validator->isSuccess()) {
 - `required()`: Mark the field as required.
 - `min($length)`: Set a minimum length or value.
 - `max($length)`: Set a maximum length or value.
+- `length($length)`: Set a length for input example length("11") = must be 11 chars
 - `equal($value)`: Ensure the value matches another value.
+- `enum`: Check if the value is one of the allowed values.
 - `maxSize($size)`: Validate the maximum file size.
 - `ext($extension)`: Validate the file extension.
 - `isSuccess()`: Check if all validations passed.
