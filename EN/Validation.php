@@ -137,6 +137,16 @@ class Validation {
         }
         return $this;
     }
+
+    // Check if the value is one of the allowed values
+    public function enum($allowedValues){
+        $allowedValuesArray = explode('|', $allowedValues);
+        if(!in_array($this->value, $allowedValuesArray)){
+            $this->errors[] = 'The value of the field '.$this->name.' is not valid.';
+        }
+        return $this;
+    }
+
     
     // Check if the file has the correct extension
     public function ext($extension){
