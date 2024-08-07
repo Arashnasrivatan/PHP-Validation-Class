@@ -175,6 +175,26 @@ class Validation {
         return $this;
     }
 
+    // بررسی اینکه آیا مقدار یک تاریخ معتبر است
+    public function date($format = 'Y-m-d'){
+        $d = DateTime::createFromFormat($format, $this->value);
+        if($d && $d->format($format) === $this->value){
+            return $this;
+        }
+        $this->errors[] = 'مقدار فیلد '.$this->name.' یک تاریخ معتبر نیست.';
+        return $this;
+    }
+    
+    // بررسی اینکه آیا مقدار یک زمان معتبر است
+    public function time($format = 'H:i:s'){
+        $d = DateTime::createFromFormat($format, $this->value);
+        if($d && $d->format($format) === $this->value){
+            return $this;
+        }
+        $this->errors[] = 'مقدار فیلد '.$this->name.' یک زمان معتبر نیست.';
+        return $this;
+    }
+
 
     // پاکسازی یک رشته
     public function purify($string){
