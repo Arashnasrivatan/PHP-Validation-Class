@@ -171,6 +171,28 @@ class Validation {
             }
             return $this;
         }
+
+        // Check if the value is a valid date according to the specified format
+        public function date($format = 'Y-m-d'){
+            $d = DateTime::createFromFormat($format, $this->value);
+            if($d && $d->format($format) === $this->value){
+                return $this;
+            }
+            $this->errors[] = 'The value of the field '.$this->name.' is not a valid date.';
+            return $this;
+        }
+
+        // Check if the value is a valid time according to the specified format
+        public function time($format = 'H:i:s'){
+            $d = DateTime::createFromFormat($format, $this->value);
+            if($d && $d->format($format) === $this->value){
+                return $this;
+            }
+            $this->errors[] = 'The value of the field '.$this->name.' is not a valid time.';
+            return $this;
+        }
+
+
     
     // Sanitize a string
     public function purify($string){
