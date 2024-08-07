@@ -163,6 +163,14 @@ class Validation {
         }
         return $this;
     }
+
+        // Check if the value exist in the array
+        public function inList(array $list){
+            if(!in_array($this->value, $list)){
+                $this->errors[] = 'The value of the field '.$this->name.' is not a valid value';
+            }
+            return $this;
+        }
     
     // Sanitize a string
     public function purify($string){
