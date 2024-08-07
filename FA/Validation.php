@@ -165,6 +165,17 @@ class Validation {
         return $this;
     }
 
+    // برسی اینکه ایا مقدار داخل یک array هست یا نه
+
+    // بررسی اینکه آیا مقدار در لیست مقادیر مجاز است
+    public function inList(array $list){
+        if(!in_array($this->value, $list)){
+            $this->errors[] = 'مقدار فیلد '.$this->name.' یکی از مقادیر مجاز نیست.';
+        }
+        return $this;
+    }
+
+
     // پاکسازی یک رشته
     public function purify($string){
         return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
