@@ -99,3 +99,7 @@ if ($validator->isSuccess()) {
 - `getErrors()`: Retrieve all error messages.
 - `displayErrors()`: Display error messages as HTML.
 - `result()`: Output errors and halt if validation fails.
+
+# Developed By <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Keyboard.webp" alt="Keyboard" width="25" height="25" />
+
+<a href="https://t.me/arash_aio456">Arash_aio</a>
