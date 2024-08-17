@@ -1,11 +1,11 @@
-# 📋 PHP Validation Class
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Memo.webp" alt="Memo" width="25" height="25" /> PHP Validation Class
 
-Welcome to the **Validation Library**! This PHP library provides a comprehensive set of validation tools for form inputs and other data, making it easier to ensure data integrity and reliability in your applications. 🚀
+Welcome to the **Validation Library**! This PHP library provides a comprehensive set of validation tools for form inputs and other data, making it easier to ensure data integrity and reliability in your applications. <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Travel%20and%20Places/Rocket.webp" alt="Rocket" width="20" height="20" />
 
-Login , Register , ForgotPassword project using this class 💻 <a href="https://github.com/Arashnasrivatan/Secure-Login-Register">Click To See 👀</a>
+Login , Register , ForgotPassword project using this class <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Laptop.webp" alt="Laptop" width="20" height="20" /> <a href="https://github.com/Arashnasrivatan/Secure-Login-Register">Click To See <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/People/Eyes.webp" alt="Eyes" width="20" height="20" /></a>
 
 
-## 🎯 Features
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Activity/Sparkles.webp" alt="Sparkles" width="25" height="25" /> Features
 
 - **Predefined Patterns**: Validate common data types like URLs, emails, integers, and more.
 - **Custom Patterns**: Define your own regex patterns for flexible validation.
@@ -13,9 +13,9 @@ Login , Register , ForgotPassword project using this class 💻 <a href="https:/
 - **Error Handling**: Retrieve and display user-friendly error messages.
 - **English and Persian** Available in two languages: Persian and English.
 
-## 🚀 Getting Started
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Travel%20and%20Places/Rocket.webp" alt="Rocket" width="25" height="25" /> Getting Started
 
-### 🛠️ Installation
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Keyboard.webp" alt="Keyboard" width="22" height="22" /> Installation
 
 1. Clone the repository:
    ```bash
@@ -31,7 +31,7 @@ Login , Register , ForgotPassword project using this class 💻 <a href="https:/
    include('path/to/db.php');
    ```
 
-### 🧑‍💻 Usage
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/People/Man%20Technologist.webp" alt="Man Technologist" width="22" height="22" /> Usage
 
 Here's a quick example of how to use the Class:
 
@@ -56,7 +56,7 @@ if ($validator->isSuccess()) {
 ?>
 ```
 
-### 🔍 Available Patterns
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Objects/Magnifying%20Glass%20Tilted%20Left.webp" alt="Magnifying Glass Tilted Left" width="22" height="22" /> Available Patterns
 
 - `uri` - Validates URI strings.
 - `url` - Validates URLs.
@@ -79,7 +79,7 @@ if ($validator->isSuccess()) {
 - `ipv4` - Validates IPv4 addresses.
 - `ipv6` - Validates IPv6 addresses.
 
-### 🏗️ Methods
+### <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Telegram-Animated-Emojis/main/Animals%20and%20Nature/Glowing%20Star.webp" alt="Glowing Star" width="22" height="22" /> Methods
 
 - `name($name)`: Set the name of the field.
 - `value($value)`: Set the value to validate.
