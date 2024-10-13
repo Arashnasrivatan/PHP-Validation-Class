@@ -158,12 +158,17 @@ class Validation {
     }
 
     // بررسی اگر فایل دارای فرمت صحیح باشد
-    public function ext($extension){
-        if($this->file['error'] != 4 && pathinfo($this->file['name'], PATHINFO_EXTENSION) != $extension && strtoupper(pathinfo($this->file['name'], PATHINFO_EXTENSION)) != $extension){
-            $this->errors[] = 'فرمت فایل '.$this->name.' باید '.$extension.' باشد.';
+    public function ext($extensions){
+        $fileExtension = pathinfo($this->file['name'], PATHINFO_EXTENSION);
+        $fileExtensionUpper = strtoupper($fileExtension);
+        $extensionsArray = array_map('strtoupper', (array)$extensions);
+
+        if($this->file['error'] != 4 && !in_array($fileExtension, $extensionsArray) && !in_array($fileExtensionUpper, $extensionsArray)){
+            $this->errors[] = 'فرمت فایل '.$this->name.' باید یکی از این موارد باشد: '.implode(', ', $extensionsArray).'.';
         }
         return $this;
     }
+
 
     // برسی اینکه ایا مقدار داخل یک array هست یا نه
 
