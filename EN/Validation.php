@@ -139,12 +139,15 @@ class Validation {
     }
     
     // Check if the file size does not exceed a maximum size
-    public function maxSize($size){
-        if($this->file['error'] != 4 && $this->file['size'] > $size){
-            $this->errors[] = 'The file size of '.$this->name.' exceeds the maximum allowed size: '.number_format($size / 1048576, 2).' MB.';
-        }
-        return $this;
+   public function maxSize($size) {
+    // Convert size from megabytes to bytes
+    $sizeInBytes = floatval($size) * 1048576; // 1 MB = 1048576 bytes
+
+    if ($this->file['error'] != 4 && $this->file['size'] > $sizeInBytes) {
+        $this->errors[] = 'The file size of ' . $this->file['name'] . ' exceeds the maximum allowed size: ' . number_format($sizeInBytes / 1048576, 2) . ' MB.';
     }
+    return $this;
+}
 
     // Check if the value is one of the allowed values
     public function enum($allowedValues){
