@@ -157,9 +157,14 @@ class Validation {
 
     
     // Check if the file has the correct extension
-    public function ext($extension){
-        if($this->file['error'] != 4 && pathinfo($this->file['name'], PATHINFO_EXTENSION) != $extension && strtoupper(pathinfo($this->file['name'], PATHINFO_EXTENSION)) != $extension){
-            $this->errors[] = 'The file format of '.$this->name.' must be '.$extension.'.';
+    // Check if the file has a valid extension
+    public function ext($extensions){
+        $fileExtension = pathinfo($this->file['name'], PATHINFO_EXTENSION);
+        $fileExtensionUpper = strtoupper($fileExtension);
+        $extensionsArray = array_map('strtoupper', (array)$extensions);
+
+        if($this->file['error'] != 4 && !in_array($fileExtension, $extensionsArray) && !in_array($fileExtensionUpper, $extensionsArray)){
+            $this->errors[] = 'The file format for '.$this->name.' must be one of the following: '.implode(', ', $extensionsArray).'.';
         }
         return $this;
     }
