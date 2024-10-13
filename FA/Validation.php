@@ -150,12 +150,15 @@ class Validation {
     
     
     // بررسی اگر اندازه فایل از حداکثر اندازه مجاز تجاوز نکند
-    public function maxSize($size){
-        if($this->file['error'] != 4 && $this->file['size'] > $size){
-            $this->errors[] = 'حجم فایل '.$this->name.' از حداکثر مجاز بیشتر است: '.number_format($size / 1048576, 2).' MB.';
-        }
-        return $this;
+    public function maxSize($size) {
+    // Convert size from megabytes to bytes
+    $sizeInBytes = floatval($size) * 1048576; // 1 MB = 1048576 bytes
+
+    if ($this->file['error'] != 4 && $this->file['size'] > $sizeInBytes) {
+        $this->errors[] = 'حجم فایل ' . $this->file['name'] . ' از حداکثر مجاز بیشتر است: ' . number_format($sizeInBytes / 1048576, 2) . ' MB.';
     }
+    return $this;
+}
 
     // بررسی اگر فایل دارای فرمت صحیح باشد
     public function ext($extensions){
